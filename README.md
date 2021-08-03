@@ -14,9 +14,15 @@ inicialmente temos um diretório de javascript para relembrar os comandos básic
 ### typescript
 
 - diretório de typescript para fins didáticos.
-- inicialemnte foi adicionado um arquivo `gitignore`
+  inicialemnte foi adicionado um arquivo `gitignore`
   iniciando projeto: dentro do diretório `typeScript`
 
 ```bash
 npm init -y
+```
+
+para instalar o typescript:
+
+```bash
+npm i typescript -D
 ```

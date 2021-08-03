@@ -26,3 +26,13 @@ para instalar o typescript:
 ```bash
 npm i typescript -D
 ```
+
+para compilar o código mais rápido podemos adicionar um diretório `.vscode` e um arquivo `settings.json` local com:
+
+```bash
+{
+  "code-runner.executorMap": {
+    "typescript": "npx ts-node --files"
+  }
+}
+```

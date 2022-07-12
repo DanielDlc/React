@@ -37,7 +37,7 @@ yarn
 yarn dev
 ````
 
-## 3° Criar o projeto backend Spring Boot
+## Criar o projeto backend Spring Boot
 
 - [Spring Initializr](https://start.spring.io/)
 

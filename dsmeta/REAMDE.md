@@ -3,19 +3,19 @@
 ## Descrição da Fundação
 
 - Criar Html e Css
-- Criar arquivo index.html style.css e logo
+- Criar arquivo index.html, style.css e logo
 
-### Criando toda estrutura
+### Estrutura
 
-- Criar o frontend estático, projeto e repositório no github
-- Criar layaout estático, componentes React, DatePicker e React Hook useState.
+- Frontend estático, projeto e repositório no github
+- Layaout estático, componentes React, DatePicker e React Hook useState.
 
 ## Objetivos do Projeto
 
 ### Criar projetos backend e frontend
 
 - Salvar os projetos no Github em monorepo (Salvar os dois projetos em um mesmo repositório)
-- Montar o visual estático do front end
+- Montar o visual estático do frontend
 
 ## Criar projeto frontend ReactJS
 
@@ -100,6 +100,69 @@ export default App
 ```
 
 - index.css
+
 remover todas as linhas e adicionar infrmações desse arquivo abaixo, da linha 1 até 21
+
 - [style.css](https://github.com/DanielDlc/React/blob/main/DSMETA-CSS/style.css)
-assim deixaremos o projeto limpo com a estrutura base do css
+
+## Criando Componente ReactJS
+
+### criando sub diretórios no diretório frontend
+
+Criar diretório src -> assets -> img e colar icone do link abaixo
+
+- [notification-icon.svg](https://github.com/DanielDlc/React/blob/main/DSMETA-CSS/notification-icon.svg)
+
+- Criar diretório components -> NotificationButton e o arquivo index.tsx
+
+```bash
+import Icon from '../../assets/img/notification-icon.svg'
+import './styles.css'
+
+function NotificationButton() {
+    return(
+      <div className="dsmeta-red-btn">
+        <img src={Icon} alt="Notificar" />
+      </div>
+    )
+}
+
+export default NotificationButton
+```
+
+- modificar arquivo App.tsx
+
+```bash
+import NotificationButton from './components/NotificationButton'
+
+function App() {
+  return(
+    <>
+      <h1>Olá, Mundo!</h1>
+      <NotificationButton />
+    </>
+  )
+}
+
+export default App
+```
+
+- dentro do diretório -> NotificationButton criar arquivo styles.css
+
+```bash
+.dsmeta-red-btn {
+  height: 45px;
+  width: 45px;
+  background: rgba(255, 107, 114, 0.1);
+  border: 1px solid #ff6b72;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.dsmeta-red-btn img {
+  width: 19px;
+}
+```

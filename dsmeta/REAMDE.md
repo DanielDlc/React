@@ -1,11 +1,14 @@
 # Spring React
 
-## Descrição
+## Descrição da Fundação
 
-### Criar toda estrutura Html e Css
+- Criar Html e Css
+- Criar arquivo index.html style.css e logo
 
-- Criar o frontend estático, projeto, repositório no github
-- Criar layaout estático, componentes React, DatePicker, React Hook useState.
+### Criando toda estrutura
+
+- Criar o frontend estático, projeto e repositório no github
+- Criar layaout estático, componentes React, DatePicker e React Hook useState.
 
 ## Objetivos do Projeto
 
@@ -34,7 +37,7 @@ yarn
 yarn dev
 ````
 
-## Criar o projeto backend Spring Boot
+## 3° Criar o projeto backend Spring Boot
 
 - [Spring Initializr](https://start.spring.io/)
 
@@ -56,8 +59,7 @@ yarn dev
 - Spring Data JPA
 - H2 Database
 - Spring Security
-- clicar em GENERATING...
-- fazer download do arquivo, renomear para backend, recortar e colar ao lado do diretório frontend
+clicar em GENERATING...fazer download do arquivo, renomear para backend, recortar e colar ao lado do diretório frontend
 
 ### ajustar o arquivo pom.xml
 
@@ -74,3 +76,30 @@ incluir o plugin no final do arquivo em build -> plugins
 Atualizar o projeto após ter colado o plugin maven-resources
 
 - Botão direito no projeto -> Maven -> Update project (force update)
+
+## Limpar o Projeto ReactJS
+
+### excluindo arquivos
+
+- favicon.svg
+- logo.svg
+- App.Css
+
+### modificar arquivos
+
+- App.tsx
+
+```bash
+function App() {
+  return(
+    <h1>Olá, Mundo!</>
+  )
+}
+
+export default App
+```
+
+- index.css
+remover todas as linhas e adicionar infrmações desse arquivo abaixo, da linha 1 até 21
+- [style.css](https://github.com/DanielDlc/React/blob/main/DSMETA-CSS/style.css)
+assim deixaremos o projeto limpo com a estrutura base do css

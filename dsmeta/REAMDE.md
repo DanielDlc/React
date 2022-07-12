@@ -17,31 +17,31 @@
 - Salvar os projetos no Github em monorepo (Salvar os dois projetos em um mesmo repositório)
 - Montar o visual estático do frontend
 
-## Criar projeto frontend ReactJS
+## Criando projeto frontend ReactJS
 
-### Criando react com typescript com comando react-ts
+### criação do react com typescript usando o  comando react-ts
 
 ```bash
 Yarn create vite frontend –template react-ts
 ```
 
-## Fazer download das dependências e bibliotecas
+### fazer download das dependências e bibliotecas
 
 ```bash
 yarn
 ````
 
-## Executar a aplicação
+### executar a aplicação
 
 ```bash
 yarn dev
 ````
 
-## Criar o projeto backend Spring Boot
+## Criando projeto backend Spring Boot
 
 - [Spring Initializr](https://start.spring.io/)
 
-#### criar um projeto usando
+### criar um projeto usando
 
 | Project   | Language       | Versão Spring Boot                           |
 | :---------- | :--------- | :---------------------------------- |
@@ -101,19 +101,22 @@ export default App
 
 - index.css
 
-remover todas as linhas e adicionar infrmações desse arquivo abaixo, da linha 1 até 21
+- remover todas as linhas e adicionar infrmações desse arquivo abaixo, utilizas linhas 1 até 21
 
 - [style.css](https://github.com/DanielDlc/React/blob/main/DSMETA-CSS/style.css)
 
 ## Criando Componente ReactJS
 
-### criando sub diretórios no diretório frontend
+### Logo
 
-Criar diretório src -> assets -> img e colar icone do link abaixo
+#### Criando subdiretórios no diretório frontend
+
+criar diretório src -> assets -> img e colar icone do link abaixo
 
 - [notification-icon.svg](https://github.com/DanielDlc/React/blob/main/DSMETA-CSS/notification-icon.svg)
 
-- Criar diretório components -> NotificationButton e o arquivo index.tsx
+- Dentro do diretório src, criar diretório components -> NotificationButton e o arquivo index.tsx
+- importar icone e css no arquivo index.tsx e definir {Icon} como alias
 
 ```bash
 import Icon from '../../assets/img/notification-icon.svg'
@@ -130,24 +133,8 @@ function NotificationButton() {
 export default NotificationButton
 ```
 
-- modificar arquivo App.tsx
-
-```bash
-import NotificationButton from './components/NotificationButton'
-
-function App() {
-  return(
-    <>
-      <h1>Olá, Mundo!</h1>
-      <NotificationButton />
-    </>
-  )
-}
-
-export default App
-```
-
-- dentro do diretório -> NotificationButton criar arquivo styles.css
+- ainda no diretório components -> NotificationButton
+- criar arquivo styles.css apenas com as propiedades btn
 
 ```bash
 .dsmeta-red-btn {
@@ -166,3 +153,144 @@ export default App
   width: 19px;
 }
 ```
+
+- dentro do diretório principal src
+- modificar arquivo App.tsx
+
+```bash
+import NotificationButton from './components/NotificationButton'
+
+function App() {
+  return(
+    <>
+      <h1>Olá, Mundo!</h1>
+      <NotificationButton />
+    </>
+  )
+}
+
+export default App
+```
+
+### Header
+
+#### criando subdiretórios no diretório frontend
+
+#### Entrar no diretório src -> components -> Criar diretório Header e os arquivos index.tsx e styles.css
+
+- modificar arquivo index.tsx
+- fazer download da logo no link abaixo e colocar no diretório src -> assets -> img
+- [logo.svg](https://github.com/DanielDlc/React/blob/main/DSMETA-CSS/logo.svg)
+
+```bash
+import logo from '../../assets/img/logo.svg'
+import '../Header/styles.css'
+
+function Header() {
+  return(
+    <>
+      <header>
+        <div className="dsmeta-logo-container">
+          <img src={logo} alt="DSMeta" />
+          <h1>DSMeta</h1>
+          <p>
+            Desenvolvido por
+            <a href="https://www.linkedin.com/in/daniel-louro-costa-dev/">@DanielDlc</a>
+          </p>
+        </div>
+      </header>
+    </>
+  )
+}
+
+export default Header
+```
+
+- modificando diretório styles.css
+
+```bash
+header {
+  background: linear-gradient(180deg, #102347 0%, #181818 100%);
+  height: 22rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dsmeta-logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dsmeta-logo-container img {
+  width: 23.5rem;
+}
+
+.dsmeta-logo-container h1 {
+  margin-top: 1.5rem;
+  font-size: 2.4rem;
+}
+
+.dsmeta-logo-container p {
+  font-size: 1.4rem;
+  font-weight: 300;
+}
+
+.dsmeta-card {
+  background-color: #283142;
+  border-radius: 10px;
+  padding: 30px 10px;
+}
+```
+
+## Main
+
+#### retornando ao diretório principal src
+
+- modificar App.tsx
+- fazendo import do Header criado anteriormente e preparando para o card de vendas SalesCard
+
+```bash
+import Header from './components/Header'
+import SalesCard from './components/SalesCard'
+
+function App() {
+  return(
+    <>
+      <Header />
+      <main>
+        <section id="sales">
+          <div class="dsmeta-container">
+            <SalesCard/>
+          </div>
+        </section>
+      </main>
+    </>
+  )
+}
+
+export default App
+```
+
+#### criando subdiretórios no diretório frontend
+
+#### Entrar no diretório src -> components -> Criar diretório SalesCard e os arquivos index.tsx e styles.css
+
+- modificar arquivo index.tsx
+- criar os import -> import `'../SalesCard/stiles.css'` e `import NotificationButton from '../NotificationButton'`
+- adicionando informações desse arquivo abaixo, utilizando as linhas 28 até 101
+- [index.html](https://github.com/DanielDlc/React/blob/main/DSMETA-CSS/index.html)
+- após adicionar informações, modificar ~~class~~ para `className`
+
+```javascript
+ <div className="dsmeta-card">
+      <h2 className="dsmeta-sales-title">Vendas</h2>
+      <div>
+        <div className="...
+```
+
+- modificar arquivo styles.css
+- adicionando informações desse arquivo abaixo, utilizando as linhas 51 até 168
+- [styles.css](https://github.com/DanielDlc/React/blob/main/DSMETA-CSS/style.css)
+- remover as classes ~~.dsmeta-container~~, ~~#sales~~, ~~.dsmeta-red-btns~~ e ~~.dsmeta-red-btns img~~

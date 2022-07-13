@@ -294,3 +294,84 @@ export default App
 - adicionando informações desse arquivo abaixo, utilizando as linhas 51 até 168
 - [styles.css](https://github.com/DanielDlc/React/blob/main/DSMETA-CSS/style.css)
 - remover as classes ~~.dsmeta-container~~, ~~#sales~~, ~~.dsmeta-red-btns~~ e ~~.dsmeta-red-btns img~~
+
+## Datepicker
+
+#### dentro do diretório frontend vamos instalar o componente React Date Picker
+
+componente útil para escolher a data desejada
+
+- [Documentação do projeto](https://github.com/Hacker0x01/react-datepicker)
+
+```bash
+yarn add react-datepicker4.8.0 @types/react-datepicker@4.4.2
+```
+
+- dentro do diretório SalesCard -> index.tsx, iremos importar as bibliotecas
+
+```javascript
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+```
+
+- vamos remover as linhas ~~<input className="dsmeta-form-control" type="text" />~~
+- incluir:
+
+```javascript
+<DatePicker
+    selected={new Date()}
+    onChange={(date: Date) => {}}
+    className="dsmeta-form-control"
+    dateFormat="dd/MM/yyyy"
+/>
+```
+
+## React Hook useState
+
+#### Guardar um estado do componente
+
+##### Alterando useState, irá modificar o estado atual
+
+- importar react hook e useState
+
+```javascript
+import { useState } from 'react';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import NotificationButton from '../NotificationButton'
+import '../SalesCard/styles.css'
+```
+
+- criando uma função
+
+```bash
+function SalesCard() {
+
+  const min = new Date(new Date().setDate(new Date().getDate() - 365));
+  const max = new Date();
+  const [minDate, setMinDate] = useState(min);
+  const [maxDate, setMaxDate] = useState(max);
+
+  return(
+```
+
+- declarar uma data mínima e data máxima dentro da função no arquivo index.tsx
+
+```javascript
+        <div className="dsmeta-form-control-container">
+          <DatePicker
+            selected={minDate}
+            onChange={(date: Date) => setMinDate(date)}
+            className="dsmeta-form-control"
+            dateFormat="dd/MM/yyyy"
+          />
+        </div>
+        <div className="dsmeta-form-control-container">
+          <DatePicker
+            selected={maxDate}
+            onChange={(date: Date) => setMaxDate(date)}
+            className="dsmeta-form-control"
+            dateFormat="dd/MM/yyyy"
+          />
+        </div>>
+```

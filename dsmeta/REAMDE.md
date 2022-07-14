@@ -376,7 +376,7 @@ function SalesCard() {
         </div>>
 ```
 
-## Objetivos seguintes
+## Objetivos do Banco de dados
 
 - Implementar o Back end
 - Acessar o banco de dados
@@ -608,3 +608,64 @@ INSERT INTO tb_sales(seller_name,visited,deals,amount,date) VALUES ('Kal-El',55,
 INSERT INTO tb_sales(seller_name,visited,deals,amount,date) VALUES ('Anakin',84,34,5787.0,'2021-07-01');
 INSERT INTO tb_sales(seller_name,visited,deals,amount,date) VALUES ('Padme',79,68,11976.0,'2021-06-27');
 ```
+
+## Objetivos do teste de endpoint da API REST
+
+- Criar repository
+
+- Criar service
+
+- Criar controller
+
+- Commir API test
+
+### Criando componente do sistema responsável por acessar o banco de dados - repository
+
+- criando interface
+
+##### local -> dsmeta -> src/main/java -> com.devsuperiordsmeta ->  botão direito: new -> interface
+
+##### escrever na aba Package: `com.devsuperiordsmeta.repositories` e aba Name: `SaleRepositore`
+
+```bash
+package com.devsuperior.dsmeta.repositories;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.devsuperior.dsmeta.entities.Sale;
+
+public interface SaleRepository extends JpaRepository<Sale, Long> {
+
+}
+```
+
+- criando service para implementar operações de negocios como buscar vendas entre outras funções
+
+##### local -> dsmeta -> src/main/java -> com.devsuperiordsmeta ->  botão direito: new -> class
+
+##### escrever na aba Package: `com.devsuperiordsmeta.services` e aba Name: `SaleService`
+
+##### criar uma função para buscar as vendas do banco de dados
+
+```bash
+package com.devsuperior.dsmeta.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.devsuperior.dsmeta.entities.Sale;
+import com.devsuperior.dsmeta.repositories.SaleRepository;
+
+@Service
+public class SaleService {
+ 
+ @Autowired
+ private SaleRepository repository;
+ 
+ public List<Sale> findSales() {
+  return repository.findAll();
+ }
+
+}

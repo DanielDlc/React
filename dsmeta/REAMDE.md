@@ -669,3 +669,39 @@ public class SaleService {
  }
 
 }
+
+- criação do controller para implementação da API 
+##### disponibilizar o endpoint para o frontend acessar o backend
+ 
+##### local -> dsmeta -> src/main/java -> com.devsuperiordsmeta ->  botão direito: new -> class
+
+##### escrever na aba Package: `com.devsuperiordsmeta.controllers` e aba Name: `SaleController`
+
+```bash
+package com.devsuperior.dsmeta.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.devsuperior.dsmeta.entities.Sale;
+import com.devsuperior.dsmeta.services.SaleService;
+
+@RestController
+@RequestMapping(value = "/sales")
+public class SaleController {
+ 
+ @Autowired
+ private SaleService service;
+ 
+ @GetMapping
+ public List<Sale> findSales(){
+  return service.findSales();
+ }
+ 
+}
+
+```

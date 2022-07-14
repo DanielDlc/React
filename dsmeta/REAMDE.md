@@ -705,3 +705,53 @@ public class SaleController {
 }
 
 ```
+
+- Consulta por data
+
+##### modificar SaleController.java para
+
+```bash
+ public Page<Sale> findSales(
+   @RequestParam(value="minDate", defaultValue = "") String minDate, 
+   @RequestParam(value="maxDate", defaultValue = "") String maxDate, 
+   Pageable pageable){
+  return service.findSales(minDate, maxDate, pageable);
+ }
+```
+
+##### modificar também o SaleService.java para
+
+```bash
+ public Page<Sale> findSales(String minDate, String maxDate, Pageable pageable) {
+  
+  LocalDate today = LocalDate.ofInstant(Instant.now(), ZoneId.systemDefault());
+  
+  LocalDate min = minDate.equals("") ? today.minusDays(365) : LocalDate.parse(minDate);
+  LocalDate max = maxDate.equals("") ? today : LocalDate.parse(maxDate);
+  
+  return repository.findSales(min, max, pageable);
+ }
+```
+
+##### modificar SaleRepository.java
+
+```bash
+public interface SaleRepository extends JpaRepository<Sale, Long> {
+
+ @Query("SELECT obj FROM Sale obj WHERE obj.date BETWEEN :min AND :max ORDER BY obj.amount DESC")
+ Page<Sale> findSales(LocalDate min, LocalDate max, Pageable pageable);
+ 
+}
+```
+
+##### após fazer as modificações recarregar a aplicação com `(Re)start`
+
+##### com isso podemos utilizar o postman para buscar em datas específicas no banco de dados
+
+##### com Postman aberto -> Collections clicar em + > New Collection -> colocar nome `DSMeta`
+
+##### DSMeta -> botão direito -> Add request *acrescenta requisição, colocar o nome de `Sales`
+
+##### agora posso escolher a opção GET e passar as datas como exemplo para buscar informações
+
+##### `http://localhost:8080/sales?minDate=2021-11-01&maxDate=2021-12-31` clicar em Send

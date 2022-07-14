@@ -434,3 +434,21 @@ public class SecurityConfig {
 
 local -> dsmeta * clicar com botão direito e escolher `(Re)start`
 para rodar a aplicação `tomcat` no endereço <http://localhost:8080/>
+
+### Banco de Dados
+
+### Criação da entidade Sale
+
+##### criar uma classe com nome `Sale` e um package com.devsuperior.dsmeta.entities
+
+##### criar as entidades com os nomes `id, seller_name, visited, deals, amount,date`, declarar as variáveis os tipos
+
+##### criar construtor para criar o objeto com o mesmo nome da classe e declarar os métodos de acesso (get e set)
+
+### Fazer mapeamento objeto-realcional(JPA)
+
+##### com isso teremos o mapeamento de um dado representado na tabela para um dado representado Orientado a Objeto
+
+##### criando annotation com o nome `@Entity` ao lado de uma classe para fazer o pré processamento na hora de compilar
+
+##### customizar nome da tabela usando `@Table(name = "tb_sales")`

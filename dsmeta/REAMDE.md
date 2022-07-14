@@ -435,7 +435,7 @@ public class SecurityConfig {
 local -> dsmeta * clicar com botão direito e escolher `(Re)start`
 para rodar a aplicação `tomcat` no endereço <http://localhost:8080/>
 
-### Banco de Dados
+## Banco de Dados
 
 ### Criação da entidade Sale
 

@@ -755,3 +755,114 @@ public interface SaleRepository extends JpaRepository<Sale, Long> {
 ##### agora posso escolher a opção GET e passar as datas como exemplo para buscar informações
 
 ##### `http://localhost:8080/sales?minDate=2021-11-01&maxDate=2021-12-31` clicar em Send
+
+## Dependências Maven do Twilio para enviar SMS
+
+### inclui dentro do backend
+
+##### local -> dsmeta -> pom.xml > na linha 48 <dependencies>  incluir
+
+```bash
+<dependency>
+ <groupId>com.twilio.sdk</groupId>
+ <artifactId>twilio</artifactId>
+ <version>8.31.1</version>
+</dependency>
+```
+
+### definir variáveis de ambiente no arquivo application.properties
+
+##### para configurar a variável onde a aplicação executar
+
+##### local -> dsmeta -> src/main/resources -> application.properties
+
+```bash
+twilio.sid=${TWILIO_SID}
+twilio.key=${TWILIO_KEY}
+twilio.phone.from=${TWILIO_PHONE_FROM}
+twilio.phone.to=${TWILIO_PHONE_TO}
+```
+
+### Criar uma classe SmsServic
+
+##### local -> dsmeta -> src/main/java -> com.devsuperiordsmeta.services -> `SmsService`
+
+```bash
+@Service
+public class SmsService {
+
+ @Value("${twilio.sid}")
+ private String twilioSid;
+
+ @Value("${twilio.key}")
+ private String twilioKey;
+
+ @Value("${twilio.phone.from}")
+ private String twilioPhoneFrom;
+
+ @Value("${twilio.phone.to}")
+ private String twilioPhoneTo;
+
+ public void sendSms() {
+
+  Twilio.init(twilioSid, twilioKey);
+
+  PhoneNumber to = new PhoneNumber(twilioPhoneTo);
+  PhoneNumber from = new PhoneNumber(twilioPhoneFrom);
+
+  Message message = Message.creator(to, from, "Teste").create();
+
+  System.out.println(message.getSid());
+ }
+}
+```
+
+##### SaleController salvar endpoint para enviar a mensagem
+
+```bash
+package com.devsuperior.dsmeta.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.devsuperior.dsmeta.entities.Sale;
+import com.devsuperior.dsmeta.services.SaleService;
+import com.devsuperior.dsmeta.services.SmsService;
+
+@RestController
+@RequestMapping(value = "/sales")
+public class SaleController {
+ 
+ @Autowired
+ private SaleService service;
+ 
+ @Autowired
+ private SmsService smsService;
+ 
+ @GetMapping
+ public Page<Sale> findSales(
+   @RequestParam(value="minDate", defaultValue = "") String minDate, 
+   @RequestParam(value="maxDate", defaultValue = "") String maxDate, 
+   Pageable pageable){
+  return service.findSales(minDate, maxDate, pageable);
+ }
+ 
+ @GetMapping("/notification")
+ public void notifySms() {
+  smsService.sendSms();
+ }
+ 
+}
+
+```
+
+### testar e configurar a variável de ambiente
+
+##### botão direito no projeto dsmeta -> Run As -> Run configurations... > aba Environment
+
+##### Add

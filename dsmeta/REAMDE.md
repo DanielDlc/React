@@ -860,9 +860,3 @@ public class SaleController {
 }
 
 ```
-
-### testar e configurar a variável de ambiente
-
-##### botão direito no projeto dsmeta -> Run As -> Run configurations... > aba Environment
-
-##### Add

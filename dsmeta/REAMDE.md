@@ -862,3 +862,33 @@ public class SaleController {
 }
 
 ```
+
+### Maven
+
+- Instalação
+
+##### [Download Maven](https://maven.apache.org/)
+
+##### Maven é uma ferramenta de gerenciamento e automação de construção (build) de projetos
+
+##### Após instalar é necessário adicionar nas variáveis de ambiente `path`
+
+- verificar instalação
+
+```bash
+mvn --version
+```
+
+- adicionar manualmente e verificar a versão do seu Maven dentro do SpringTool...
+
+##### no canto superior esquerdo do SpringTool... -> Window -> Preferences -> Installations
+
+##### adicionar manualmente escolhendo a opção add e indicando o caminho do maven
+
+##### pode ser possível atualizar seu projeto java caso ocorra algum problema
+
+##### clicar no seu projeto com botão direito -> escolher opção Maven -> Update Project... -> Force Update of Snapshots/Releases
+
+##### Após concluir, rodar o projeto novamente no Boot Dashboard em local -> dsmeta [:8080] -> botão direito  escolher (Re)start
+
+### Heroku

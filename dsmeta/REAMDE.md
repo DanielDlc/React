@@ -892,3 +892,75 @@ mvn --version
 ##### Após concluir, rodar o projeto novamente no Boot Dashboard em local -> dsmeta [:8080] -> botão direito  escolher (Re)start
 
 ### Heroku
+
+##### Instalar  [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
+
+##### criar conta no [heroku](https://www.heroku.com/)
+
+##### Criando uma nova aplicação -> new -> Create new app -> definir um App name -> configurar as variáveis de ambiente
+
+##### Settings -> Config vars
+
+##### abrindo uma nova aba do navegador, entrar no site do [twilio](https://console.twilio.com/?frameUrl=%2Fconsole%3Fx-target-region%3Dus1) e informar abaixo de acordo com a variável de ambiente
+
+```bash
+TWILIO_SID #colocarAqui_Account SID
+```
+
+```bash
+TWILIO_KEY #colocarAqui_Auth Token
+```
+
+```bash
+TWILIO_PHONE_FROM #colocarAqui_My Twilio phone number
+```
+
+```bash
+TWILIO_PHONE_TO #colocarAqui_MeuNumeroDeTelefone+55219....
+```
+
+- Criar arquivo no projeto
+
+##### pasta principal dsmeta -> botão direito -> new -> file -> system.properties
+
+`java.runtime.version=17`
+
+- Após instalar Heroku CLI terminal
+
+```bash
+heroku -v
+```
+
+```bash
+heroku login
+```
+
+```bash
+heroku git remote -a <nome-do-app>
+```
+
+```bash
+git remote -v
+```
+
+```bash
+git subtree push --prefix dsmeta/backend heroku main
+```
+
+### Postman
+
+##### efetuar download [Postman](https://www.postman.com/)
+
+##### Com Postman aberto -> Collections -> + ->  New Collection -> renomear para dsmeta
+
+##### Com botão direito -> add request -> Sales
+
+##### GET `http://localhost:8080/slaes`
+
+#### Duplicar o Sales e renomear para buscar através do heroku
+
+##### GET `https://dsmeta-danieldlc.herokuapp.com/sales?minDate=2011-11-01&maxDate=2021-12-31`
+
+#### enviar notificação para o celular de acordo com o banco de dados
+
+##### GET `https://dsmeta-danieldlc.herokuapp.com/sales/53/notification`

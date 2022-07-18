@@ -964,3 +964,29 @@ git subtree push --prefix dsmeta/backend heroku main
 #### enviar notificação para o celular de acordo com o banco de dados
 
 ##### GET `https://dsmeta-danieldlc.herokuapp.com/sales/53/notification`
+
+### Integração do back end com front end e implantar front end
+
+#### Fazendo requisição com Axios e useEffect
+
+##### dentro da pasta front end, rodar o comando
+
+```bash
+yarn add axios@0.27.2
+```
+
+##### fazendo requisição no frontend
+
+##### local -> dsmeta -> frontend -> src -> components -> index.tsx
+
+##### dentro da função SalesCard
+
+```bash
+  useEffect(() => {
+    axios.get("http://localhost:8080/sales")
+      .then(response => {
+        console.log(response.data);
+        
+      })
+  })
+```

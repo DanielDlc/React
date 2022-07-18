@@ -969,7 +969,7 @@ git subtree push --prefix dsmeta/backend heroku main
 
 #### Fazendo requisição com Axios e useEffect
 
-##### dentro da pasta front end, rodar o comando
+##### dentro da pasta dsmeta -> front end, abrir o terminal e executar o comando
 
 ```bash
 yarn add axios@0.27.2
@@ -989,4 +989,81 @@ yarn add axios@0.27.2
         
       })
   })
+```
+
+### Listagem de vendas
+
+##### local -> dsmeta -> frontend -> src -> criar diretório com nome `utils` e arquivo com nome `request.ts`
+
+#### Definição da BASE_URl com  padrão de coalescência nula
+
+```bash
+export const BASE_URL = import.meta.env.VITE_BACKEND_URL ?? "http://localhost:8080";
+```
+
+#### Retornando ao diretório ##### local -> dsmeta -> frontend -> src -> components -> index.tsx
+
+##### incluir `BASE_URL` para sempre fazer requisição
+
+```bash
+  useEffect(() => {
+    axios.get(`${BASE_URL}/sales`)
+      .then(response => {
+        console.log(response.data);
+        
+      })
+  })
+```
+
+#### Criação de models
+
+##### local -> dsmeta -> frontend -> src -> criar diretório com nome `models` e arquivo com nome `sales.ts`
+
+```bash
+export type Sale = {
+    id: number; 
+    sellerName: string;
+    visited: number;
+    deals: number;
+    amount: number;
+}
+```
+
+#### Armazenando lista de vendas em
+
+##### Retornando ao diretório  local -> dsmeta -> frontend -> src -> components -> index.tsx
+
+```bash
+  const [sales, setSales] = useState<Sale[]>([]);
+
+  useEffect(() => {
+    axios.get(`${BASE_URL}/sales`)
+      .then(response => {
+        setSales(response.data.content);
+        
+      })
+  })
+```
+
+#### criando a lista dinâmica com os dados vindo da API e incluindo todos os elementos
+
+```bash
+            {sales.map(sale => {
+              return (
+              <tr key={sale.id}>
+                <td className="show992">{sale.id}</td>
+                <td className="show576">{new Date(sale.date).toLocaleDateString()}</td>
+                <td>{sale.sellerName}</td>
+                <td className="show992">{sale.visited}</td>
+                <td className="show992">{sale.deals}</td>
+                <td>R$ {sale.amount.toFixed(2)}</td>
+                <td>
+                  <div className="dsmeta-red-btn-container">
+                    <NotificationButton/>
+                  </div>
+                </td>
+            </tr>
+             )
+            })}
+              <tr>
 ```

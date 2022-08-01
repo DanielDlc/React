@@ -1089,3 +1089,72 @@ export type Sale = {
       })
   }, [minDate, maxDate]);
 ```
+
+### Envio de notificação
+
+##### Passando parâmetro para o botão de noticiar com props
+
+adicionar props para enviar notificação
+
+```bash
+type Props = {
+  saleId: number;
+}
+
+function handleClick(id :number) {
+  axios(`${BASE_URL}sales/${id}/notification`)
+    .then(response => {
+      console.log("SUCESSO");
+
+    });
+}
+
+function NotificationButton( {saleId} : Props ) { 
+    return(
+      <div className="dsmeta-red-btn" onClick={() => handleClick(saleId)}>
+        <img src={Icon} alt="Notificar" />
+      </div>
+    )
+}
+```
+
+##### export default NotificationButton local -> index.tsx modificar
+
+```bash
+<div className="dsmeta-red-btn-container">
+  <NotificationButton saleId={sale.id}/>
+</div>
+```
+
+##### Utilizar biblioteca `react-toastify` para receber notificações de mensagens enviadas
+
+```node
+yarn add react-toastify@9.0.5
+```
+
+local -> App.tsx, fazer as seguintes importações
+
+```bash
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+```
+
+declarar o componente
+
+```bash
+function App() {
+  return(
+    <>
+    <ToastContainer />
+    ...
+```
+
+em notificações index.tsx, trocar console.log por chamada toast
+
+```bash
+function handleClick(id : number){
+  axios(`${BASE_URL}/sales/${id}/notification`)
+  .then(response => {toast("SMS enviado com sucesso")
+    });
+}
+```

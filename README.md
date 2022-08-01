@@ -2,7 +2,7 @@
 
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/DanielDlc/Django/blob/main/LICENSE)
 
-- [Deploy Heroku backend e Netlify projeto completo com React e Springboot](https://melodic-bunny-e90c87.netlify.app/)
+- [Deploy Heroku e Netlify projeto completo com React e Springboot](https://melodic-bunny-e90c87.netlify.app/)
 
 ## Sobre o projeto
 

@@ -1067,3 +1067,25 @@ export type Sale = {
             })}
               <tr>
 ```
+
+### Passando as datas como argumento
+
+##### Ainda no diretório  local -> dsmeta -> frontend -> src -> components -> index.tsx
+
+##### converter para o formato minDate para ano, mês e dia utilizando um afunção `toISOString`
+
+```bash
+    const dmin = minDate.toISOString().slice(0, 10);
+    const dmax = maxDate.toISOString().slice(0, 10);
+```
+
+#### chamando a requisição e passando os valores da caixa de venda com dmin e dmax
+
+```bash
+    axios.get(`${BASE_URL}/sales?minDate=${dmin}&maxDate=${dmax}`)
+      .then(response => {
+        setSales(response.data.content);
+        
+      })
+  }, [minDate, maxDate]);
+```

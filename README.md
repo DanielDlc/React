@@ -2,10 +2,12 @@
 
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/DanielDlc/Django/blob/main/LICENSE)
 
+- [Deploy Heroku backend e Netlify projeto completo com React e Springboot](https://melodic-bunny-e90c87.netlify.app/)
+
 ## Sobre o projeto
 
 Conteúdo didático para programadores iniciantes em Javascript.\
-O conteúdo abaixo, contém um pequeno tutorial do básico até o intermediário.
+O conteúdo abaixo, contém um pequeno tutorial do básico envolvendo React para Frontend e algumas linguagens como Java e Python para Backend.
 
 ### Javascript
 
@@ -36,4 +38,3 @@ para compilar o código mais rápido podemos adicionar um diretório `.vscode` e
   }
 }
 ```
-- [Deploy Heroku backend e Netlify projeto completo com React e Springboot](https://melodic-bunny-e90c87.netlify.app/)
